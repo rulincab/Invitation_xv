@@ -1,0 +1,375 @@
+/* =========================================================
+   RSVP — BOTÓN DESTACADO + MODAL GOOGLE FORM
+   ========================================================= */
+
+.rsvp-hero-button {
+  position: relative;
+  z-index: 10;
+  width: min(360px, 100%);
+  min-height: 78px;
+  margin: 22px auto 10px;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.95);
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.2),
+    rgba(11, 22, 38, 0.94) 48%,
+    rgba(123, 30, 45, 0.32)
+  );
+  color: #f5ecd6;
+  cursor: pointer;
+  box-shadow:
+    0 0 0 1px rgba(212, 175, 55, 0.1),
+    0 12px 35px rgba(0, 0, 0, 0.48),
+    0 0 30px rgba(212, 175, 55, 0.12);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  overflow: hidden;
+}
+
+.rsvp-hero-button::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.18) 48%,
+    transparent 61%
+  );
+  transform: translateX(-70%) rotate(8deg);
+  animation: rsvpShine 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.rsvp-hero-button:hover {
+  transform: translateY(-3px) scale(1.015);
+  border-color: #f0d98a;
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.55),
+    0 0 34px rgba(212, 175, 55, 0.25);
+}
+
+.rsvp-hero-button:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.rsvp-hero-icon {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(212, 175, 55, 0.8);
+  border-radius: 50%;
+  color: #d4af37;
+  font-size: 17px;
+  box-shadow: inset 0 0 16px rgba(212, 175, 55, 0.1);
+}
+
+.rsvp-hero-copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 3px;
+}
+
+.rsvp-hero-copy strong {
+  font:
+    600 12px Montserrat,
+    sans-serif;
+  letter-spacing: 1.25px;
+  color: #f5ecd6;
+}
+
+.rsvp-hero-copy small {
+  margin: 0;
+  font:
+    400 11px Montserrat,
+    sans-serif;
+  letter-spacing: 0.35px;
+  color: rgba(245, 236, 214, 0.72);
+}
+
+.rsvp-hero-arrow {
+  flex: 0 0 auto;
+  color: #d4af37;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.rsvp-note {
+  max-width: 330px;
+  margin: 8px auto 0;
+  font:
+    400 12px "Cormorant Garamond",
+    Georgia,
+    serif;
+  color: rgba(245, 236, 214, 0.78);
+  letter-spacing: 0.2px;
+}
+
+.rsvp-note span {
+  color: #d4af37;
+  margin-right: 5px;
+}
+
+@keyframes rsvpShine {
+  0%,
+  55% {
+    transform: translateX(-75%) rotate(8deg);
+  }
+  75%,
+  100% {
+    transform: translateX(75%) rotate(8deg);
+  }
+}
+
+/* =========================================================
+   MODAL RSVP
+   ========================================================= */
+
+.rsvp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+
+  width: 100vw;
+  height: 100dvh;
+
+  padding: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  pointer-events: auto;
+  touch-action: auto;
+}
+
+.rsvp-modal {
+  position: relative;
+  z-index: 1000000;
+
+  width: min(720px, 96vw);
+  height: min(92dvh, 900px);
+
+  display: flex;
+  flex-direction: column;
+
+  background: #fdfdfd;
+
+  border: 1px solid rgba(212, 175, 55, 0.85);
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow: 0 25px 100px rgba(0, 0, 0, 0.75);
+
+  pointer-events: auto;
+  touch-action: auto;
+}
+
+.rsvp-modal-header {
+  position: relative;
+  z-index: 2;
+
+  flex: 0 0 auto;
+
+  padding: 15px 50px 12px;
+
+  text-align: center;
+
+  background: #071522;
+
+  border-bottom: 1px solid rgba(212, 175, 55, 0.55);
+
+  pointer-events: auto;
+}
+
+.rsvp-modal-header .eyebrow {
+  margin-bottom: 2px;
+}
+
+.rsvp-modal-header h3 {
+  margin: 0;
+
+  font:
+    500 28px "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  color: #f5ecd6;
+}
+
+.rsvp-modal-close {
+  position: absolute;
+  z-index: 10;
+
+  top: 8px;
+  right: 10px;
+
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  border-radius: 50%;
+
+  background: rgba(2, 10, 18, 0.9);
+
+  color: #d4af37;
+
+  font-size: 24px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.rsvp-iframe-wrap {
+  position: relative;
+  z-index: 1;
+
+  flex: 1 1 auto;
+
+  min-height: 0;
+
+  width: 100%;
+
+  background: #fff;
+
+  overflow: auto;
+
+  -webkit-overflow-scrolling: touch;
+
+  pointer-events: auto;
+  touch-action: auto;
+}
+
+.google-form {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 700px;
+
+  border: 0;
+
+  background: #fff;
+
+  pointer-events: auto;
+  touch-action: auto;
+}
+
+.rsvp-setup-message {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  background: #071522;
+  color: #f5ecd6;
+}
+
+.rsvp-setup-icon {
+  color: #d4af37;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.rsvp-setup-message h4 {
+  margin: 0 0 10px;
+  font:
+    500 28px "Cormorant Garamond",
+    Georgia,
+    serif;
+  color: #d4af37;
+}
+
+.rsvp-setup-message p {
+  max-width: 430px;
+}
+
+.rsvp-setup-message code {
+  color: #d4af37;
+  word-break: break-word;
+}
+
+@media (max-width: 650px) {
+  .rsvp-hero-button {
+    width: 100%;
+    min-height: 74px;
+    margin-top: 17px;
+  }
+
+  .rsvp-hero-copy strong {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .rsvp-hero-copy small {
+    font-size: 10px;
+  }
+
+  .rsvp-modal-backdrop {
+    padding: 0;
+  }
+
+  .rsvp-modal {
+    width: 100vw;
+    height: 100dvh;
+    max-height: none;
+
+    border-radius: 0;
+
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .rsvp-modal-header {
+    padding-top: 13px;
+    padding-bottom: 10px;
+  }
+
+  .rsvp-modal-header h3 {
+    font-size: 25px;
+  }
+
+  .google-form {
+    min-height: 900px;
+  }
+}
+
+/* DEBUG RSVP */
+.rsvp-modal-backdrop {
+  pointer-events: auto !important;
+}
+
+.rsvp-modal {
+  pointer-events: auto !important;
+}
+
+.rsvp-iframe-wrap {
+  pointer-events: auto !important;
+}
+
+.google-form {
+  pointer-events: auto !important;
+}
