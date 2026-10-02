@@ -362,6 +362,9 @@ h2 {
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 5px 25px #0008;
+  position:fixed;
+  bottom: 20px;   /* distancia desde abajo */
+  right: 20px;  
 }
 
 .gold-button:hover {
@@ -621,4 +624,9 @@ h2 {
   .content {
     width: 430px;
   }
+  .boton-final {
+  position: fixed;
+  bottom: 20px;   /* distancia desde abajo */
+  right: 20px;    /* opcional: distancia desde la derecha */
+}
 }

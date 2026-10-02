@@ -107,11 +107,12 @@ function Section({ item, index, onNext }) {
 
           {index === 2 && (
             <>
-              <div className="chapter-number">02</div>
+              <div className="chapter-number"></div>
               <h2>Una noche muy especial está por comenzar.</h2>
               <p>
-                Quiero compartir contigo este momento tan importante para mí y
-                celebrar juntos el comienzo de una nueva etapa.
+                "Será un privilegio para mí contar con tu presencia en este paso
+                tan especial. Tu compañía hará aún más memorable el inicio de
+                esta nueva etapa de mi vida"
               </p>
               <div className="date large">19</div>
               <div className="sub">DE DICIEMBRE · 2026</div>
@@ -208,39 +209,6 @@ function Section({ item, index, onNext }) {
 
           {index === 6 && (
             <>
-              <div className="eyebrow">¿NOS ACOMPAÑAS?</div>
-              <h2>Será un honor compartir esta noche contigo.</h2>
-              <p>
-                Confirma tu asistencia antes del 15 de Novimebre y 
-                ayúdanos a preparar cada detalle de esta celebración.
-              </p>
-
-              <button
-                className="rsvp-hero-button"
-                type="button"
-                onClick={() => {
-                  window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
-                }}
-                aria-label="Abrir formulario de confirmación"
-              >
-                <span className="rsvp-hero-icon">✦</span>
-                <span className="rsvp-hero-copy">
-                  <strong>CONFIRMAR MI ASISTENCIA</strong>
-                  <strong></strong>
-                  <small>Formulario de confirmación</small>
-                </span>
-                <span className="rsvp-hero-arrow">→</span>
-              </button>
-
-              <div className="rsvp-note">
-                <span>♥</span> Tu confirmación nos ayudará a preparar una noche
-                inolvidable.
-              </div>
-            </>
-          )}
-
-          {index === 7 && (
-            <>
               <div className="eyebrow">UN PEQUEÑO DETALLE</div>
 
               <div className="envelope-card">
@@ -269,7 +237,7 @@ function Section({ item, index, onNext }) {
             </>
           )}
 
-          {index === 8 && (
+          {index === 7 && (
             <>
               <div className="eyebrow">GRACIAS POR SER PARTE</div>
               <h2>
@@ -280,6 +248,39 @@ function Section({ item, index, onNext }) {
                 ¿NOS VEMOS EN
                 <br />
                 UNA NOCHE MÁGICA?
+              </div>
+            </>
+          )}
+
+          {index === 8 && (
+            <>
+              <div className="eyebrow">¿NOS ACOMPAÑAS?</div>
+              <h2>Será un honor compartir esta noche contigo.</h2>
+              <p>
+                Confirma tu asistencia antes del 15 de Novimebre y ayúdanos a
+                preparar cada detalle de esta celebración.
+              </p>
+
+              <button
+                className="rsvp-hero-button"
+                type="button"
+                onClick={() => {
+                  window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+                }}
+                aria-label="Abrir formulario de confirmación"
+              >
+                <span className="rsvp-hero-icon">✦</span>
+                <span className="rsvp-hero-copy">
+                  <strong>CONFIRMAR MI ASISTENCIA</strong>
+                  <strong></strong>
+                  <small>Formulario de confirmación</small>
+                </span>
+                <span className="rsvp-hero-arrow">→</span>
+              </button>
+
+              <div className="rsvp-note">
+                <span>♥</span> Tu confirmación nos ayudará a preparar una noche
+                inolvidable.
               </div>
               <button
                 className="gold-button"
