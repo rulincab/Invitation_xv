@@ -347,7 +347,7 @@ h2 {
 }
 
 /* BUTTONS */
-.gold-button {
+.gold-buttons {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -365,6 +365,24 @@ h2 {
   position:fixed;
   bottom: 20px;   /* distancia desde abajo */
   right: 20px;  
+}
+
+/* BUTTONS */
+.gold-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45px;
+  padding: 10px 22px;
+  border: 1px solid var(--gold);
+  border-radius: 7px;
+  background: rgba(7, 19, 29, 0.68);
+  color: var(--cream);
+  font: 500 10px Montserrat;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 5px 25px #0008; 
 }
 
 .gold-button:hover {

@@ -20,9 +20,9 @@ const sections = [
   { id: "evento", label: "El evento", image: evento },
   { id: "cuenta", label: "Cuenta regresiva", image: cuenta },
   { id: "dress", label: "Dress code", image: dress },
-  { id: "confirma", label: "Confirmación", image: confirma },
   { id: "sobres", label: "Un pequeño detalle", image: lluviaSobres },
   { id: "final", label: "Detalles finales", image: finalImg },
+  { id: "confirma", label: "Confirmación", image: confirma },
 ];
 
 const target = new Date("2026-12-19T18:00:00-05:00");
@@ -192,7 +192,7 @@ function Section({ item, index, onNext }) {
 
               <div className="ornament">✦ ───── ◇ ───── ✦</div>
 
-              <h1>Se reserva el color azul en todas sus gamas</h1>
+              <h1>Se reserva el color azul en todas sus gamas (Damas)</h1>
 
               <p>
                 Para acompañar esta noche especial, te invitamos a vestir de
@@ -283,7 +283,7 @@ function Section({ item, index, onNext }) {
                 inolvidable.
               </div>
               <button
-                className="gold-button"
+                className="gold-buttons"
                 onClick={() =>
                   document
                     .getElementById("inicio")
