@@ -111,7 +111,7 @@ function Section({ item, index, onNext }) {
               <h2>Una noche muy especial está por comenzar.</h2>
               <p>
                 "Será un privilegio para mí contar con tu presencia en este paso
-                tan especial. Tu compañía hará aún más memorable el inicio de
+                tan único. Tu compañía hará aún más memorable el inicio de
                 esta nueva etapa de mi vida"
               </p>
               <div className="date large">19</div>
@@ -128,7 +128,7 @@ function Section({ item, index, onNext }) {
                 DE 2026
               </h2>
               <div className="detail-block">
-                <span>CEREMONIA</span>
+                <span>CEREMONIA RELIGIOSA</span>
                 <b>6:00 PM</b>
               </div>
               <div className="detail-block">
@@ -195,7 +195,7 @@ function Section({ item, index, onNext }) {
               <h1>Se reserva el color azul en todas sus gamas (Damas)</h1>
 
               <p>
-                Para acompañar esta noche especial, te invitamos a vestir de
+                Para acompañar esta noche espectacular, te invitamos a vestir de
                 manera elegante y acorde al evento.
               </p>
 
@@ -232,7 +232,7 @@ function Section({ item, index, onNext }) {
               <div className="ornament">✦ ───── ◇ ───── ✦</div>
 
               <p className="thank-you-detail">
-                Gracias por acompañarme en esta noche tan especial.
+                Gracias por acompañarme en esta noche maravillosa.
               </p>
             </>
           )}
