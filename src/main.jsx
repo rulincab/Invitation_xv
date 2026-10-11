@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 import "./rsvp.css";
+import MusicPlayer from "./MusicPlayer";
 
 import entrada from "./assets/01-entrada.jpg";
 import apertura from "./assets/02-apertura.jpg";
@@ -27,23 +28,16 @@ const sections = [
 
 const target = new Date("2026-12-19T18:00:00-05:00");
 
-/*
- * GOOGLE FORM
- * Reemplaza esta URL por la URL pública de tu formulario.
- * Ejemplo:
- * https://docs.google.com/forms/d/e/XXXXXXXX/viewform
- */
 const GOOGLE_FORM_URL =
   "https://script.google.com/macros/s/AKfycbxvNkEz7dyNxDlXUOiYdVoTMAtleBdiTIiIsSCieuaRJN20T3C39Gff_VY8AQdetIni-Q/exec";
-
-const GOOGLE_FORM_EMBED_URL = `${GOOGLE_FORM_URL}?embedded=true`;
 
 function useCountdown() {
   const get = () => {
     const ms = Math.max(0, target.getTime() - Date.now());
-    const day = 86400000,
-      hour = 3600000,
-      minute = 60000;
+    const day = 86400000;
+    const hour = 3600000;
+    const minute = 60000;
+
     return {
       days: Math.floor(ms / day),
       hours: Math.floor((ms % day) / hour),
@@ -51,24 +45,30 @@ function useCountdown() {
       seconds: Math.floor((ms % minute) / 1000),
     };
   };
+
   const [value, setValue] = useState(get);
+
   useEffect(() => {
     const timer = setInterval(() => setValue(get()), 1000);
     return () => clearInterval(timer);
   }, []);
+
   return value;
 }
 
-function Section({ item, index, onNext }) {
+function Section({ item, index, onNext, goTo }) {
   const countdown = useCountdown();
 
   const mapUrl =
     "https://www.google.com/maps/search/?api=1&query=Club%20Egresados%20Unilibre%2C%20Av.%2070%20%2352-30%2C%20Bogot%C3%A1%2C%20Colombia";
+
   return (
     <section id={item.id} className={`chapter chapter-${index + 1}`}>
       <div className="art">
         <img className="art-bg" src={item.image} alt="" aria-hidden="true" />
+
         <div className="art-shade" />
+
         <div className="content">
           {index === 0 && (
             <>
@@ -77,6 +77,7 @@ function Section({ item, index, onNext }) {
               <div className="sub">MIS XV AÑOS</div>
               <div className="ornament">✦ ───── ◇ ───── ✦</div>
               <div className="date">19 · 12 · 2026</div>
+
               <button className="gold-button" onClick={onNext}>
                 DESCUBRIR INVITACIÓN
               </button>
@@ -87,18 +88,23 @@ function Section({ item, index, onNext }) {
             <>
               <div className="chapter-number"></div>
               <div className="eyebrow">UNA PEQUEÑA INVITACIÓN</div>
+
               <h2>
                 Hay noches que se convierten en recuerdos para toda la vida.
               </h2>
+
               <p>
                 Con mucha ilusión quiero invitarte a celebrar conmigo el
                 comienzo de una nueva etapa.
               </p>
+
               <p>
                 Será una noche para compartir, celebrar y crear recuerdos que
                 permanecerán para siempre.
               </p>
+
               <div className="signature">Isabella Salguero Rincón</div>
+
               <button className="text-button" onClick={onNext}>
                 Continuar hacia la celebración →
               </button>
@@ -108,12 +114,15 @@ function Section({ item, index, onNext }) {
           {index === 2 && (
             <>
               <div className="chapter-number"></div>
+
               <h2>Una noche muy especial está por comenzar.</h2>
+
               <p>
                 "Será un privilegio para mí contar con tu presencia en este paso
-                tan único. Tu compañía hará aún más memorable el inicio de
-                esta nueva etapa de mi vida"
+                tan único. Tu compañía hará aún más memorable el inicio de esta
+                nueva etapa de mi vida"
               </p>
+
               <div className="date large">19</div>
               <div className="sub">DE DICIEMBRE · 2026</div>
             </>
@@ -122,15 +131,18 @@ function Section({ item, index, onNext }) {
           {index === 3 && (
             <>
               <div className="eyebrow">UNA NOCHE ESPECIAL</div>
+
               <h2>
                 19 DE DICIEMBRE
                 <br />
                 DE 2026
               </h2>
+
               <div className="detail-block">
                 <span>CEREMONIA RELIGIOSA</span>
                 <b>6:00 PM</b>
               </div>
+
               <div className="detail-block">
                 <span>CELEBRACIÓN</span>
                 <b>
@@ -139,6 +151,7 @@ function Section({ item, index, onNext }) {
                   DE LA CEREMONIA
                 </b>
               </div>
+
               <div className="detail-block">
                 <span>CLUB EGRESADOS UNILIBRE</span>
                 <b>
@@ -147,6 +160,7 @@ function Section({ item, index, onNext }) {
                   Bogotá, Colombia
                 </b>
               </div>
+
               <a
                 className="gold-button link-button"
                 href={mapUrl}
@@ -162,19 +176,23 @@ function Section({ item, index, onNext }) {
             <>
               <div className="eyebrow">EL MOMENTO SE ACERCA</div>
               <h2>CUENTA REGRESIVA</h2>
+
               <div className="countdown">
                 <div>
                   <strong>{String(countdown.days).padStart(3, "0")}</strong>
                   <span>DÍAS</span>
                 </div>
+
                 <div>
                   <strong>{String(countdown.hours).padStart(2, "0")}</strong>
                   <span>HORAS</span>
                 </div>
+
                 <div>
                   <strong>{String(countdown.minutes).padStart(2, "0")}</strong>
                   <span>MINUTOS</span>
                 </div>
+
                 <div>
                   <strong>{String(countdown.seconds).padStart(2, "0")}</strong>
                   <span>SEGUNDOS</span>
@@ -213,7 +231,6 @@ function Section({ item, index, onNext }) {
 
               <div className="envelope-card">
                 <div className="envelope-glow"></div>
-
                 <div className="envelope-icon">✦</div>
               </div>
 
@@ -225,8 +242,7 @@ function Section({ item, index, onNext }) {
 
               <p className="envelope-message">
                 Si deseas tener un detalle adicional, tendremos{" "}
-                <strong>lluvia de sobres </strong>
-                durante la celebración.
+                <strong>lluvia de sobres</strong> durante la celebración.
               </p>
 
               <div className="ornament">✦ ───── ◇ ───── ✦</div>
@@ -240,10 +256,13 @@ function Section({ item, index, onNext }) {
           {index === 7 && (
             <>
               <div className="eyebrow">GRACIAS POR SER PARTE</div>
+
               <h2>
                 Gracias por ser parte de este momento tan importante para mí.
               </h2>
+
               <div className="ornament">✦ ───── ◇ ───── ✦</div>
+
               <div className="final-message">
                 ¿NOS VEMOS EN
                 <br />
@@ -255,9 +274,11 @@ function Section({ item, index, onNext }) {
           {index === 8 && (
             <>
               <div className="eyebrow">¿NOS ACOMPAÑAS?</div>
+
               <h2>Será un honor compartir esta noche contigo.</h2>
+
               <p>
-                Confirma tu asistencia antes del 15 de Novimebre y ayúdanos a
+                Confirma tu asistencia antes del 15 de noviembre y ayúdanos a
                 preparar cada detalle de esta celebración.
               </p>
 
@@ -270,11 +291,12 @@ function Section({ item, index, onNext }) {
                 aria-label="Abrir formulario de confirmación"
               >
                 <span className="rsvp-hero-icon">✦</span>
+
                 <span className="rsvp-hero-copy">
                   <strong>CONFIRMAR MI ASISTENCIA</strong>
-                  <strong></strong>
                   <small>Formulario de confirmación</small>
                 </span>
+
                 <span className="rsvp-hero-arrow">→</span>
               </button>
 
@@ -282,20 +304,19 @@ function Section({ item, index, onNext }) {
                 <span>♥</span> Tu confirmación nos ayudará a preparar una noche
                 inolvidable.
               </div>
+
               <button
                 className="gold-buttons"
-                onClick={() =>
-                  document
-                    .getElementById("inicio")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
+                type="button"
+                onClick={() => goTo("inicio")}
               >
                 VOLVER AL INICIO
               </button>
             </>
           )}
         </div>
-        {index < 8 && (
+
+        {index < sections.length - 1 && (
           <button
             className="scroll-next"
             onClick={onNext}
@@ -315,51 +336,74 @@ function App() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) =>
+      (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const i = sections.findIndex((s) => s.id === entry.target.id);
-            if (i >= 0) setActive(i);
+            const i = sections.findIndex(
+              (section) => section.id === entry.target.id,
+            );
+
+            if (i >= 0) {
+              setActive(i);
+            }
           }
-        }),
+        });
+      },
       { threshold: 0.55 },
     );
-    sections.forEach((s) => {
-      const el = document.getElementById(s.id);
-      if (el) observer.observe(el);
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section.id);
+      if (element) observer.observe(element);
     });
+
     return () => observer.disconnect();
   }, []);
 
-  const go = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const goTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+    });
+
     setMenuOpen(false);
   };
 
   return (
     <div className="site">
       <header className="topbar">
-        <button className="brand" onClick={() => go("inicio")}>
+        <button
+          className="brand"
+          onClick={() => goTo("inicio")}
+          aria-label="Volver al inicio"
+        >
           IS
         </button>
+
         <nav>
-          <button onClick={() => go("inicio")}>Inicio</button>
-          <button onClick={() => go("evento")}>Evento</button>
-          <button onClick={() => go("dress")}>Dress code</button>
-          <button onClick={() => go("confirma")}>Confirma</button>
+          <button onClick={() => goTo("inicio")}>Inicio</button>
+          <button onClick={() => goTo("evento")}>Evento</button>
+          <button onClick={() => goTo("dress")}>Dress code</button>
+          <button onClick={() => goTo("confirma")}>Confirma</button>
         </nav>
-        <button className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+
+        <button
+          className="menu-btn"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label="Abrir menú"
+          aria-expanded={menuOpen}
+        >
           ☰
         </button>
+
         {menuOpen && (
           <div className="menu">
-            {sections.map((s, i) => (
+            {sections.map((section, i) => (
               <button
-                key={s.id}
+                key={section.id}
                 className={active === i ? "selected" : ""}
-                onClick={() => go(s.id)}
+                onClick={() => goTo(section.id)}
               >
-                {i + 1}. {s.label}
+                {i + 1}. {section.label}
               </button>
             ))}
           </div>
@@ -367,12 +411,13 @@ function App() {
       </header>
 
       <aside className="progress">
-        {sections.map((s, i) => (
+        {sections.map((section, i) => (
           <button
-            key={s.id}
+            key={section.id}
             className={active === i ? "on" : ""}
-            onClick={() => go(s.id)}
-            aria-label={s.label}
+            onClick={() => goTo(section.id)}
+            aria-label={section.label}
+            aria-current={active === i ? "step" : undefined}
           />
         ))}
       </aside>
@@ -383,16 +428,29 @@ function App() {
             key={item.id}
             item={item}
             index={index}
-            onNext={() => sections[index + 1] && goTo(sections[index + 1].id)}
+            goTo={goTo}
+            onNext={() => {
+              const nextSection = sections[index + 1];
+              if (nextSection) goTo(nextSection.id);
+            }}
           />
         ))}
       </main>
+
+      {/* El reproductor permanece disponible en todas las secciones */}
+      <MusicPlayer />
     </div>
   );
-
-  function goTo(id) {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  }
 }
 
-createRoot(document.getElementById("root")).render(<App />);
+const container = document.getElementById("root");
+
+if (!container) {
+  throw new Error("No se encontró el elemento #root en index.html");
+}
+
+if (!window.__isabellaReactRoot) {
+  window.__isabellaReactRoot = createRoot(container);
+}
+
+window.__isabellaReactRoot.render(<App />);
