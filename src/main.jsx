@@ -118,7 +118,7 @@ function Section({ item, index, onNext, goTo }) {
               <h2>Una noche muy especial está por comenzar.</h2>
 
               <p>
-                "Será un privilegio para mí contar con tu presencia en este paso
+                "Será un privilegio para mí, contar con tu presencia en este paso
                 tan único. Tu compañía hará aún más memorable el inicio de esta
                 nueva etapa de mi vida"
               </p>
