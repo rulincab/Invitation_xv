@@ -29,7 +29,7 @@ const sections = [
 const target = new Date("2026-12-19T18:00:00-05:00");
 
 const GOOGLE_FORM_URL =
-  "https://script.google.com/macros/s/AKfycbxvNkEz7dyNxDlXUOiYdVoTMAtleBdiTIiIsSCieuaRJN20T3C39Gff_VY8AQdetIni-Q/exec";
+  "https://script.google.com/macros/s/AKfycbyCRXIQ-hQCQaOHl1cA8BpeGtskXl29UZMJV0EPR4SJj6XTyE8hZ9w-miu6pxClKudF8A/exec";
 
 function useCountdown() {
   const get = () => {
