@@ -14,7 +14,7 @@ export default function MusicPlayer() {
   const [playing, setPlaying] = useState(false);
   const [audioError, setAudioError] = useState(false);
 
-  const audioSrc = `${import.meta.env.BASE_URL}/public/audio/musica-isabella.mp3`;
+  const audioSrc = `${import.meta.env.BASE_URL}/audio/musica-isabella.mp3`;
 
   const toggleMusic = async () => {
     const audio = audioRef.current;
